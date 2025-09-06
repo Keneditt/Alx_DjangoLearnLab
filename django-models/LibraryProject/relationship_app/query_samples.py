@@ -10,7 +10,11 @@ def get_books_in_library(library_name):
     library = Library.objects.get(name=library_name)
     return Library.objects.get(name=library_name).books.all()
 
-# Retrive the librarian for a library
-def get_librarian_for_book(library_name):
-    library = Library.objects.get(name=library_name)
-    return library.objects.get(name=library_name).librarian
+# 4. Retrieve the librarian for a library
+print("\nRetrieving the librarian for 'Community Library':")
+try:
+    library_to_query = Library.objects.get(name="Community Library")
+    librarian = library_to_query.librarian
+    print(f"The librarian for 'Community Library' is: {librarian.name}")
+except librarian.DoesNotExist:
+    print("No librarian found for this library.")

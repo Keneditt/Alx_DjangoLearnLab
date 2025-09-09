@@ -1,1 +1,1 @@
-books = Book.object.get(title="1984")
+books = Book.objects.get(title="1984")

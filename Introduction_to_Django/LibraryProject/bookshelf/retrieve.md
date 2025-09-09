@@ -1,0 +1,1 @@
+books = Book.object.get(title="1984")

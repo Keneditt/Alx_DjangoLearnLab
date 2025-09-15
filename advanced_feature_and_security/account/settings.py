@@ -127,3 +127,7 @@ import os
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# advanced_features_and_security/your_project_name/settings.py
+
+# Add this line at the end of the file
+AUTH_USER_MODEL = 'your_app_name.CustomUser'

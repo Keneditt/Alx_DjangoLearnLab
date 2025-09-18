@@ -65,7 +65,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import connection
 from django.utils.html import escape
 from .models import Book
-from .forms import BookForm  # Assume you have a form defined
+from .forms import ExampleForm  # Assume you have a form defined
 
 # Safe query using Django ORM
 def book_list(request):

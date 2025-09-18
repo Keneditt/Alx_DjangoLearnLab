@@ -30,4 +30,23 @@ class CustomUser(AbstractUser):
     objects = CustomUserManager()
     
     def __str__(self):
-        return self.username
+        return self.username     
+
+from django.db import models
+from django.conf import settings
+
+class Book(models.Model):
+    title = models.CharField(max_length=200)
+    author = models.CharField(max_length=100)
+    published_date = models.DateField()
+    description = models.TextField()
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    class Meta:
+        permissions = [
+            ("can_create", "Can create a new book entry"),
+            ("can_delete", "Can delete a book entry"),
+        ]
+
+    def __str__(self):
+        return self.title   

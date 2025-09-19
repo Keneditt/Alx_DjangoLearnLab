@@ -18,3 +18,13 @@ urlpatterns = [
     path('login/', LoginView.as_view(template_name='relationship_app/login.html'), name='login'),
     path('logout/', LogoutView.as_view(template_name='relationship_app/logout.html'), name='logout'),
 ]
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    # Other URL patterns...
+    path('add_book/', views.add_book, name='add-book'),
+    path('edit_book/<int:pk>/', views.edit_book, name='edit-book'),
+    path('delete_book/<int:pk>/', views.delete_book, name='delete-book'),
+]

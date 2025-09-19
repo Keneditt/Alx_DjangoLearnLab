@@ -1,12 +1,12 @@
 from django.shortcuts import render
-from .models import Book, Library, Author
+from .models import Library, Author
 from django.views.generic import DetailView
 
 def list_books(request):
     """
     A function-based view to list all books.
     """
-    books = Book.objects.all()
+    books = Library.objects.all()
     return render(request, 'list_books.html', {'books': books})
 
 class LibraryDetailView(DetailView):

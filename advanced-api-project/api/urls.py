@@ -1,11 +1,13 @@
 from django.urls import path
-from django.urls import path
-from .views import BookListCreateView, BookRetrieveUpdateDestroyView
+from . import views
 
 urlpatterns = [
-    # URL for listing all books and creating a new book
-    path('books/', BookListCreateView.as_view(), name='book-list-create'),
-
-    # URL for retrieving, updating, or deleting a single book by its primary key (pk)
-    path('books/<int:pk>/', BookRetrieveUpdateDestroyView.as_view(), name='book-detail'),
+    # URL for adding a book
+    path('books/create/', views.add_book, name='add-book'),
+    
+    # URL for editing a book by primary key
+    path('books/update/<int:pk>/', views.edit_book, name='edit-book'),
+    
+    # URL for deleting a book by primary key
+    path('books/delete/<int:pk>/', views.delete_book, name='delete-book'),
 ]

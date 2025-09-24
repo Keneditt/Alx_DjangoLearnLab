@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticate
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Author, Book
+from django_filters import rest_framework
 from .serializers import AuthorSerializer, BookSerializer
 from rest_framework import permissions # This line is redundant but it's in the previous response, so I'll keep it for now.
 

@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django Blog Home</title>
+    <link rel="stylesheet" href="{% static 'blog/css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Django Blog!</h1>
+    </header>
+
+    <main>
+        <p>Project setup complete. This is the main blog page.</p>
+        <h2>Latest Posts</h2>
+        <ul>
+            <li>Post 1 Title (Static Placeholder)</li>
+            <li>Post 2 Title (Static Placeholder)</li>
+        </ul>
+    </main>
+
+    <footer>
+        <p id="footer-text">© 2024 Blog Project</p>
+    </footer>
+
+    <script src="{% static 'blog/js/main.js' %}"></script>
+</body>
+</html>

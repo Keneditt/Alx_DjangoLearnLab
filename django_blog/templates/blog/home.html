@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Django Blog{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="mb-4">Latest Blog Posts</h1>
+        
+        {% if posts %}
+            {% for post in posts %}
+            <div class="card post-card">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <a href="{% url 'post-detail' post.pk %}" class="text-decoration-none text-dark">
+                            {{ post.title }}
+                        </a>
+                    </h2>
+                    <p class="text-muted">
+                        By {{ post.author.username }} on {{ post.published_date|date:"F d, Y" }}
+                    </p>
+                    <p class="card-text post-content">
+                        {{ post.content|truncatewords:30 }}
+                    </p>
+                    <a href="{% url 'post-detail' post.pk %}" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-info">
+                <h4>No posts yet!</h4>
+                <p>Be the first to create a blog post.</p>
+                {% if user.is_authenticated %}
+                <a href="{% url 'post-create' %}" class="btn btn-primary">Create Your First Post</a>
+                {% else %}
+                <a href="{% url 'login' %}" class="btn btn-primary">Login to Create Post</a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">About This Blog</h5>
+                <p class="card-text">
+                    Welcome to our Django-powered blog! Here you can read and share interesting articles 
+                    about web development, programming, and technology.
+                </p>
+                {% if not user.is_authenticated %}
+                <div class="d-grid gap-2">
+                    <a href="{% url 'register' %}" class="btn btn-success">Join Our Community</a>
+                    <a href="{% url 'login' %}" class="btn btn-outline-primary">Sign In</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

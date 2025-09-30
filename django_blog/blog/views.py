@@ -83,3 +83,25 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 # def post_list(request):
 #     # This function is now superseded by PostListView
 #     return render(request, 'blog/index.html', {})
+
+# blog/views.py
+
+class PostListView(ListView):
+    # ...
+    template_name = 'blog/post_list.html'  # Matches file post_list.html
+
+class PostDetailView(DetailView):
+    # ...
+    template_name = 'blog/post_detail.html' # Matches file post_detail.html
+
+class PostCreateView(LoginRequiredMixin, CreateView):
+    # ...
+    template_name = 'blog/post_form.html' # Matches file post_form.html
+
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    # ...
+    template_name = 'blog/post_form.html' # Matches file post_form.html
+    
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    # ...
+    template_name = 'blog/post_confirm_delete.html' # Matches file post_confirm_delete.html

@@ -52,4 +52,22 @@
         </div>
     </div>
 </div>
-{% endblock %}
+
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">{% if object %}Edit Post{% else %}New Post{% endif %}</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">{% if object %}Update{% else %}Post{% endif %}</button>
+                <a class="btn btn-outline-secondary" href="{% url 'post-list' %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

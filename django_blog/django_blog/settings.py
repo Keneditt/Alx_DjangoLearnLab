@@ -134,3 +134,6 @@ LOGOUT_REDIRECT_URL = '/' # Redirect to the homepage after logout
 
 # URL to redirect to when login is required
 LOGIN_URL = '/login/' # Used by the @login_required decorator
+
+# Add this line to settings.py
+STATIC_ROOT = BASE_DIR / "staticfiles"
